@@ -4,11 +4,11 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'api/poi/**'
+      - 'apis/poi/**'
   pull_request:
     branches: [ main ]
     paths:
-      - 'api/poi/**'
+      - 'apis/poi/**'
     
   # Allows you to run this workflow manually from the Actions tab
   # workflow_dispatch:

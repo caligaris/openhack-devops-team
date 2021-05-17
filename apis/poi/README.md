@@ -2,7 +2,7 @@
 # POI Service
 
 ## Overview
-.
+
 ## Build the Application
 
 ## Tests
