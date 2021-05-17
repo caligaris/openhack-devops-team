@@ -33,5 +33,10 @@ jobs:
     - name: Issoue on faild build
       if: ${{ failure() }}    
       uses: JasonEtco/create-an-issue@v2.4.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      id: create-issue
+    - run: 'echo Created issue number ${{ steps.create-issue.outputs.number }}'
+    - run: 'echo Created ${{ steps.create-issue.outputs.url }}'        
       
       
