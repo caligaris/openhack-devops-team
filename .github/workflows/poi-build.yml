@@ -31,7 +31,7 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Trigger Push to ACR and deploy
-      if: ${{ github.event_name == push }}
+      if: ${{ github.event_name == 'push' }}
       uses: benc-uk/workflow-dispatch@v1
       with:
         workflow: Push to ACR and deploy
