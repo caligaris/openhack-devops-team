@@ -30,15 +30,19 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: Trigger Push to ACR and deploy
+      if: ${{ github.event_name == push }}
+      uses: benc-uk/workflow-dispatch@v1
+      with:
+        workflow: Push to ACR and deploy
+        token: ${{ secrets.PAT_GITHUB_TOKEN }}      
     - name: Issoue on faild build
+      id: create-issue
       if: ${{ failure() }}    
       uses: JasonEtco/create-an-issue@v2.4.0
       env:
         GITHUB_TOKEN: ${{ secrets.PAT_GITHUB_TOKEN }}
       with:
         filename: .github/BUILD_ISSUE_TEMPLATE.md   
-      id: create-issue
-    - run: 'echo Created issue number ${{ steps.create-issue.outputs.number }}'
-    - run: 'echo Created ${{ steps.create-issue.outputs.url }}'        
       
       
