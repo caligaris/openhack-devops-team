@@ -36,7 +36,7 @@ jobs:
       with:
         workflow: Push to ACR and deploy
         token: ${{ secrets.PAT_GITHUB_TOKEN }}      
-    - name: Issoue on faild build
+    - name: Issue on faild build
       id: create-issue
       if: ${{ failure() }}    
       uses: JasonEtco/create-an-issue@v2.4.0
