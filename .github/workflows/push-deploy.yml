@@ -38,3 +38,10 @@ jobs:
         run: >
           az acr build -t devopsoh/api-poi:$GITHUB_RUN_NUMBER -r ${{secrets.ACR_NAME}} 
           -f ${{github.workspace}}/apis/poi/web/Dockerfile ${{github.workspace}}/apis/poi/web
+      
+      - name: Deploy to web app
+        if: success()
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: openhacklucalidevopspoi
+          publish-profile: ${{ secrets.POI_PUBLISHPROFILE }}
