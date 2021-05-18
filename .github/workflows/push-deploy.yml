@@ -36,7 +36,7 @@ jobs:
       # Build and push container to registry
       - name: Build and Push Docker image
         run: >
-          az acr build -t devopsoh/api-poi:$GITHUB_RUN_NUMBER -r ${{secrets.ACR_NAME}} 
+          az acr build -t devopsoh/api-poi:${{ github.sha }} -r ${{secrets.ACR_NAME}} 
           -f ${{github.workspace}}/apis/poi/web/Dockerfile ${{github.workspace}}/apis/poi/web
       
       - name: Deploy to web app
@@ -45,3 +45,4 @@ jobs:
         with:
           app-name: openhacklucalidevopspoi
           publish-profile: ${{ secrets.POI_PUBLISHPROFILE }}
+          images: '${{secrets.ACR_NAME}}/devopsoh/api-poi:${{ github.sha }}'
