@@ -57,7 +57,7 @@ while [[ true ]]; do
    fi 
    timestamp=$(date "+%Y%m%d-%H%M%S")
    if [[ -z $hasUrl ]]; then
-     echo "$status "
+     echo "$timestamp | $status "
    else
      echo "$timestamp | $status | $endpoint " 
    fi 
