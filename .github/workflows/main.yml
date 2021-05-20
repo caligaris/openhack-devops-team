@@ -37,7 +37,7 @@ jobs:
       - name: Poll POI Service
         id: POI_Polling
         run: |
-          grep -V
+          grep --help
           echo "::set-output name=result::$?"
         shell: bash {0}
 
