@@ -39,10 +39,9 @@ jobs:
           az acr build -t devopsoh/api-poi:${{ github.sha }} -r ${{secrets.ACR_NAME}} 
           -f ${{github.workspace}}/apis/poi/web/Dockerfile ${{github.workspace}}/apis/poi/web
       
-      - name: Deploy to web app
-        if: success()
+      - name: Deploy POI Web App to Staging slot
         uses: azure/webapps-deploy@v2
         with:
-          app-name: openhacklucalidevopspoi
-          publish-profile: ${{ secrets.POI_PUBLISHPROFILE }}
+          app-name: openhacklucalidevopspoi-staging
+          publish-profile: ${{ secrets.POI_STAGING_PUBLISHPROFILE }}
           images: '${{secrets.ACR_NAME}}.azurecr.io/devopsoh/api-poi:${{ github.sha }}'
