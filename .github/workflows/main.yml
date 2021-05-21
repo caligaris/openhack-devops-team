@@ -37,7 +37,7 @@ jobs:
       - name: Poll POI Service
         id: POI_Polling
         run: |
-          timeout 30s bash .github/polling.sh www.microsoft.com 2>/dev/null | grep -q "| 200" 
+          timeout 30s bash .github/polling.sh www.microsoft.com 2>/dev/null | grep -q "| 201" 
           echo "::set-output name=result::$?"
         shell: bash {0}
 
