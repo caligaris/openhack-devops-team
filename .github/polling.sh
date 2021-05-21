@@ -4,6 +4,8 @@ declare -i duration=1
 declare hasUrl=""
 declare endpoint
 
+trap 'exit 0' SIGPIPE
+
 usage() {
     cat <<END
     polling.sh [-i] [-h] endpoint
