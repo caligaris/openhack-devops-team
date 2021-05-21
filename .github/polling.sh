@@ -57,9 +57,9 @@ while [[ true ]]; do
    fi 
    timestamp=$(date "+%Y%m%d-%H%M%S")
    if [[ -z $hasUrl ]]; then
-     trap 'exit 0' SIGPIPE
+     trap 'exit 0' 13
      echo "$timestamp | $status "
-     trap 'exit 0' SIGPIPE
+     trap 'exit 0' 13
    else
      echo "$timestamp | $status | $endpoint " 
    fi 
