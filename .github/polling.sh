@@ -4,8 +4,6 @@ declare -i duration=1
 declare hasUrl=""
 declare endpoint
 
-trap 'exit 0' SIGPIPE
-
 usage() {
     cat <<END
     polling.sh [-i] [-h] endpoint
@@ -59,7 +57,9 @@ while [[ true ]]; do
    fi 
    timestamp=$(date "+%Y%m%d-%H%M%S")
    if [[ -z $hasUrl ]]; then
+     trap 'exit 0' SIGPIPE
      echo "$timestamp | $status "
+     trap 'exit 0' SIGPIPE
    else
      echo "$timestamp | $status | $endpoint " 
    fi 
