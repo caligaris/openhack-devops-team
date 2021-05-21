@@ -39,7 +39,7 @@ jobs:
         run: |
           timeout 2m bash .github/polling.sh www.microsoft.com 2>/dev/null | grep -q "| 200" 
           echo "::set-output name=result::$?"
-        shell: bash {0}
+        #shell: bash {0}
 
       # Runs a set of commands using the runners shell
       - name: Polling result
